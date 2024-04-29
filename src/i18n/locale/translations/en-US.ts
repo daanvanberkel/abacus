@@ -147,4 +147,5 @@ export default {
   home_bills: 'Bills',
   bills_paid: 'Paid',
   bills_not_expected: 'Not expected',
+  transaction_form_bill_label: 'Bill',
 };

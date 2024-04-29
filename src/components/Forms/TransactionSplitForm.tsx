@@ -380,6 +380,23 @@ export default function TransactionSplitForm({
       />
 
       <AutocompleteField
+        label={translate('transaction_form_bill_label')}
+        placeholder={translate('transaction_form_bill_label')}
+        value={formData.billName}
+        onChangeText={(value: string) => setTransaction({
+          ...formData,
+          billName: value,
+        })}
+        onSelectAutocomplete={(autocomplete) => setTransaction({
+          ...formData,
+          billId: autocomplete.id,
+          billName: autocomplete.name,
+        })}
+        InputRightElement={deleteBtn(['billId', 'billName'])}
+        routeApi="bills"
+      />
+
+      <AutocompleteField
         multiple
         label={translate('transaction_form_tags_label')}
         placeholder={translate('transaction_form_tags_label')}
@@ -436,6 +453,8 @@ export default function TransactionSplitForm({
             notes: '',
             currencySymbol: '',
             currencyCode: '',
+            billId: '',
+            billName: '',
           });
         }}
       >

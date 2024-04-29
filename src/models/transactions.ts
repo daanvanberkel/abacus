@@ -23,6 +23,8 @@ export type TransactionSplitType = {
   foreignAmount: string,
   foreignCurrencyId: string,
   foreignCurrencyCode?: string,
+  billId: string,
+  billName: string,
 }
 
 export type TransactionType = {
@@ -85,6 +87,8 @@ export const initialSplit = () => ({
   budgetId: '',
   tags: [],
   notes: '',
+  billId: '',
+  billName: '',
 }) as TransactionSplitType;
 
 export const types = [
@@ -328,6 +332,8 @@ export default createModel<RootModel>()({
           budget_name: transaction.budgetName,
           type: transaction.type,
           amount: transaction.amount ? parseFloat(transaction.amount.replace(',', '.')) : 0,
+          bill_id: transaction.billId,
+          bill_name: transaction.billName,
         })),
         error_if_duplicate_hash: false,
         apply_rules: true,
